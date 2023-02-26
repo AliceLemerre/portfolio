@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+
+<script>
+
+    //for each figure in galerie add class "show"
+    // if any filter is checked uncheck tout
+    // if unchecked remove class show
+document.addEventListener('DOMContentLoaded', function(){
+
+    let projets= document.querySelector(".fig");
+
+    document.getElementById('filtre-tout').addEventListener('click', function(){
+        for(let i = 0; i<projets.length; i++){
+        document.querySelector('.fig').classList.toggle("hide");
+        }
+    });
+
+});
+
+    document.addEventListener('DOMContentLoaded', function(){
+    let projetsPrint = document.querySelectorAll('.print');
+
+    for(let i = 0; i<projetsPrint.length; i++){
+    document.querySelector('.filtre-print').addEventListener('click', function(){
+        document.querySelector('.print').classList.toggle("hide");
+    
+    });
+}
+});
+
+
+
+</script>
+</head>
+
+<body>
+
+
+    <header>
+
+        <nav class="menu">
+            <a href="#" class="lien"><span class="burger"></span></a>
+            <ul class="list">
+                <li><a href="index.html">à propos</a></li>
+                <li><a href="#"></a>travaux</li>
+                <li><a href="#"></a>contact</li>
+            </ul>
+        </nav>
+        
+        <div class="infos">
+            <div class="titres">
+                <h1>Alice Lemerre</h1>
+                <h2>Graphiste <br>
+                    Print et Web</h2>
+            </div>
+        </div>
+
+        <section id="presentation">
+
+            <p> Touche à tout <span class="highlight">passionnée</span>, j'aime
+                développer ma créativité sur tout type
+                de support. Je cherche à intégrer une
+                équipe impliquée qui me permettra de
+                gérer des projets enrichissants et me
+                poussera à constamment me dépasser.</p>
+            
+            <a href="a-propos.html" class="CTA">
+                <p> En savoir plus sur moi </p><img src="/images/arrow-right-solid.svg" alt="fleche">
+            </a>
+
+        </section>
+    </header>
+
+    <section class="galerie">
+
+        <h3>Mes travaux</h3>
+
+        <ul class="liste-filtres">
+            <li> <input type="checkbox" id="filtre-tout" checked="true">
+                <label for="tout">Tout</label> </li>
+
+            <li> <input type="checkbox" class="filtre-print">
+                <label for="print">Print</label> </li>
+
+            <li> <input type="checkbox" class="filtre-web">
+                <label for="web">Webdesign-intégration</label> </li>
+
+            <li> <input type="checkbox" class="id-vis">
+                <label for="id-vis">Identité visuelle</label> </li>
+
+            <li> <input type="checkbox" class="filtre-motion">
+                <label for="motion">Motion design</label> </li>
+
+            <li> <input type="checkbox" class="filtre-plv">
+                <label for="PLV">PLV</label> </li>
+        </ul>
+
+
+        <div class="projets">
+            <figure class="fig print id-vis photographie print">
+                <img src="images/caisse-bulle-st-laurent.jpg" alt="">
+                <a href="#">
+                    <figcaption>
+                        <h3>Les bulles du Saint Laurent</h3>
+                        Identité visuelle, packaging
+                    </figcaption>
+                </a>
+
+            </figure>
+
+            <figure class="fig id-vis plv print">
+                <img src="images/couvvape.png" alt="">
+                <a href="#">
+                    <figcaption>
+                        <h3>Le carnet de Vape</h3>
+                        Identité visuelle, PLV
+                    </figcaption>
+                </a>
+            </figure>
+
+            <figure class="fig id-vis web">
+                <img src="images/amm5.png" alt=""> <a href="#">
+                    <figcaption>
+                        <h3>Art Méli-Mélo</h3>
+                        Identité visuelle, Webdesign
+                    </figcaption>
+                </a></figure>
+
+            <figure class="fig id-vis">
+                <img src="images/01_FLATLAY_BUISNESSCARDS.png" alt="">
+                <a href="#">
+                    <figcaption>
+                        <h3>Laboratoire Sense</h3>
+                        Identité visuelle
+                    </figcaption>
+                </a>
+            </figure>
+
+            <figure class="fig web id-vis" id="firecamp">
+                <img src="images/mockup-firecamp.png" alt="">
+                <a href="#">
+                    <figcaption>
+                        <h3>Fire Camp</h3>
+                        Webdesign
+                    </figcaption>
+                </a></figure>
+
+            <figure class="fig photographie" id="gaspillage">
+                <img src="images/1ca46943-51b2-4392-b4be-b05fae6c8b0c.jpg" alt="">
+                <a href="#">
+                    <figcaption>
+                        <h3>Gaspillage alimentaire</h3>
+                        Photographie
+                    </figcaption>
+                </a>
+            </figure>
+
+            <figure class="fig id-vis web print" id="croft">
+                <img src="images/couv-croft2.png" alt="">
+                <a href="#">
+
+                    <figcaption>
+                        <h3>Edith Croft</h3>
+                        Identité visuelle, Webdesign
+                    </figcaption>
+                </a></figure>
+
+            <figure class="fig motion">
+                <img src="images/couv-geev.png" alt="">
+                <a href="#">
+                    <figcaption>
+                        <h3>Geev</h3>
+                        Réseaux sociaux
+                    </figcaption>
+                </a></figure>
+
+        
+        </div>
+
+
+    </section>
+
+
+
+    <section id="contact">
+
+        <div id="moyensContact">
+            <h3> Me contacter</h3>
+
+            <p> Ecrivez-moi à lemerre.alice[at]gmail.com <br>
+                ou utilisez le formulaire de contact !</p>
+
+
+            <p> Retrouvez-moi sur :</p>
+            <ul>
+                <li><img src="/images/square-github.svg" alt=""></li>
+                <li><img src="/images/square-behance.svg" alt=""></li>
+                <li><img src="/images/linkedin.svg" alt=""></li>
+            </ul>
+
+        </div>
+
+        <form action="" method="get" class="form-example">
+
+            <div class="form-example">
+                <label for="name">Votre nom : </label>
+                <input type="text" name="name" id="name" required>
+            </div>
+
+            <div class="form-example">
+                <label for="email">Votre adresse mail : </label>
+                <input type="email" name="email" id="email" required>
+            </div>
+
+            <div>
+                <label for="message">Votre demande: </label>
+                <input type="text" name="message" id="message" required>
+            </div>
+
+            <div class="submit-button">
+                <input type="submit" value="Envoyer">
+            </div>
+        </form>
+    </section>
+
+</body>
+
+<script>
+
+    const burger = document.querySelector('.burger');
+    const menu = document.querySelector('.menu');
+
+    menu.addEventListener('click', () => {
+
+  burger.classList.toggle('open')
+  menu.classList.toggle('open')
+});
+
+
+
+
+
+  
+    </script>
+</html>
+
