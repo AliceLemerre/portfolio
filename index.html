@@ -8,62 +8,33 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
 
-<script>
-document.addEventListener('DOMContentLoaded', function(){
-    //selectionner l'ul
-    const filtres = document.querySelector(".liste-filtres");
-    //selectionner les figures
-    const figures = document.querySelectorAll(".fig");
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            //nodelist des filtres
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            console.log(checkboxes);
+            //nodelist des figures
+            const figures = document.querySelectorAll('.galerie figure');
+            console.log(figures);
 
+            //parcours les filtres
+            checkboxes.forEach((checkbox) => {
+                //si changement sur un des filtres:
+                checkbox.addEventListener('change', (e) => {
+                    //recupération valeur des filtres
+                    const category = e.target.value;
 
-    filtres.addEventListener("click", (e)=>{
-        if(e.target.classList.contains("fig")){
-            filtres.querySelector(".show").classList.remove("show");
-            e.target.classList.add("show");
-
-            const filtreActif = e.target.getAttribute("data-filter");
-            console.log(filtreActif);
-
-            figures.forEach(item =>{
-                if(item.classList.contains(filtreActif) || filtreActif === "tout"){
-                    item.classList.add("show");
-                    item.classList.remove("hide");
-                }
-                else{
-                    item.classList.add("hide");
-                }
-            }); 
-        }
-    });
-});
-
-
-//document.addEventListener('DOMContentLoaded', function(){
-
-//    let projets= document.querySelector(".fig");
-
- //   document.getElementById('filtre-tout').addEventListener('click', function(){
-  //      for(let i = 0; i<projets.length; i++){
- //       document.querySelector('.fig').classList.toggle("hide");
-    //    }
- //   });
-
-//});
-
-   // document.addEventListener('DOMContentLoaded', function(){
- //   let projetsPrint = document.querySelectorAll('.print');
-
-  //  for(let i = 0; i<projetsPrint.length; i++){
- //   document.querySelector('.filtre-print').addEventListener('click', function(){
-   //     document.querySelector('.print').classList.toggle("hide");
-    
- //   });
-//}
-//});
-
-
-
-</script>
+                    //ajoute show à une figure si sa class === à la value de la case cochée (ou si "tout" est coché)
+                    figures.forEach((figure) => {
+                        if (figure.classList.contains(category) || category ===
+                            "tout") {
+                            figure.classList.toggle('show', e.target.checked);
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -79,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 <li><a href="#"></a>contact</li>
             </ul>
         </nav>
-        
+
         <div class="infos">
             <div class="titres">
                 <h1>Alice Lemerre</h1>
@@ -90,9 +61,11 @@ document.addEventListener('DOMContentLoaded', function(){
 
         <section id="presentation">
 
-            <p> Graphiste freelance <span class="highlight">touche à tout</span>, je suis constamment à la recherche de nouvelles façon de développer ma créativité. <br>
-                J'exerce à Paris et en Normandie et suis disponible pour créer, mettre à jour ou décliner votre identité visuelle sur tout support <span class="highlight">  imprimé ou numérique</span>.</p>
-            
+            <p> Graphiste freelance <span class="highlight">touche à tout</span>, je suis constamment à la recherche de
+                nouvelles façon de développer ma créativité. <br>
+                J'exerce à Paris et en Normandie et suis disponible pour créer, mettre à jour ou décliner votre identité
+                visuelle sur tout support <span class="highlight"> imprimé ou numérique</span>.</p>
+
             <a href="#contactSection" class="CTA">
                 <p> Me contacter </p><img src="/images/arrow-right-solid.svg" alt="fleche">
             </a>
@@ -105,22 +78,22 @@ document.addEventListener('DOMContentLoaded', function(){
         <h3>Mes travaux</h3>
 
         <ul class="liste-filtres">
-            <li class="filtre" data-filter="tout"> <input type="checkbox" id="filtre-tout" checked="true">
+            <li class="filtre"> <input type="checkbox" value="tout" checked="true">
                 <label for="tout">Tout</label> </li>
 
-            <li class="filtre" data-filter="print"> <input type="checkbox" class="filtre-print">
+            <li class="filtre"> <input type="checkbox" value="print">
                 <label for="print">Print</label> </li>
 
-            <li class="filtre" data-filter="web"> <input type="checkbox" class="filtre-web">
+            <li class="filtre"> <input type="checkbox" value="web">
                 <label for="web">Webdesign-intégration</label> </li>
 
-            <li class="filtre" data-filter="id-vis"> <input type="checkbox" class="id-vis">
+            <li class="filtre"> <input type="checkbox" value="id-vis">
                 <label for="id-vis">Identité visuelle</label> </li>
 
-            <li class="filtre" data-filter="motion"> <input type="checkbox" class="filtre-motion">
+            <li class="filtre"> <input type="checkbox" value="motion">
                 <label for="motion">Motion design</label> </li>
 
-            <li class="filtre" data-filter="plv"> <input type="checkbox" class="filtre-plv">
+            <li class="filtre"> <input type="checkbox" value="plv">
                 <label for="PLV">PLV</label> </li>
         </ul>
 
@@ -156,7 +129,8 @@ document.addEventListener('DOMContentLoaded', function(){
                 </a></figure>
 
             <figure class="fig id-vis">
-                <img src="images/01_FLATLAY_BUISNESSCARDS.png" alt="Visuels des produits laboratoire Sense" data-item="id-vis">
+                <img src="images/01_FLATLAY_BUISNESSCARDS.png" alt="Visuels des produits laboratoire Sense"
+                    data-item="id-vis">
                 <a href="#">
                     <figcaption>
                         <h3>Laboratoire Sense</h3>
@@ -175,7 +149,8 @@ document.addEventListener('DOMContentLoaded', function(){
                 </a></figure>
 
             <figure class="fig photographie" id="gaspillage">
-                <img src="images/1ca46943-51b2-4392-b4be-b05fae6c8b0c.jpg" alt="affiche contre le gaspillage alimentaire" data-item="photo">
+                <img src="images/1ca46943-51b2-4392-b4be-b05fae6c8b0c.jpg"
+                    alt="affiche contre le gaspillage alimentaire" data-item="photo">
                 <a href="#">
                     <figcaption>
                         <h3>Gaspillage alimentaire</h3>
@@ -203,7 +178,7 @@ document.addEventListener('DOMContentLoaded', function(){
                     </figcaption>
                 </a></figure>
 
-        
+
         </div>
 
 
@@ -214,7 +189,8 @@ document.addEventListener('DOMContentLoaded', function(){
     <section id="contact">
 
         <div id="moyensContact">
-            <a id="contactSection"></a> <h3> Me contacter</h3></a>
+            <a id="contactSection"></a>
+            <h3> Me contacter</h3></a>
 
 
             <p> Ecrivez-moi à lemerre.alice[at]gmail.com <br>
@@ -223,9 +199,12 @@ document.addEventListener('DOMContentLoaded', function(){
 
             <p> Retrouvez-moi sur :</p>
             <ul>
-                <li><a href="https://github.com/AliceLemerre/" target="_blank"><img src="/images/square-github.svg" alt="logo-github"></a></li>
-                <li><a href="https://www.behance.net/alicelemerre" target="_blank"><img src="/images/square-behance.svg" alt=""></a></li>
-                <li><a href="https://www.linkedin.com/in/alice-lemerre/"target="_blank"><img src="/images/linkedin.svg" alt=""></a></li>
+                <li><a href="https://github.com/AliceLemerre/" target="_blank"><img src="/images/square-github.svg"
+                            alt="logo-github"></a></li>
+                <li><a href="https://www.behance.net/alicelemerre" target="_blank"><img src="/images/square-behance.svg"
+                            alt=""></a></li>
+                <li><a href="https://www.linkedin.com/in/alice-lemerre/" target="_blank"><img src="/images/linkedin.svg"
+                            alt=""></a></li>
             </ul>
 
         </div>
@@ -256,21 +235,14 @@ document.addEventListener('DOMContentLoaded', function(){
 </body>
 
 <script>
-
     const burger = document.querySelector('.burger');
     const menu = document.querySelector('.menu');
 
     menu.addEventListener('click', () => {
 
-  burger.classList.toggle('open')
-  menu.classList.toggle('open')
-});
+        burger.classList.toggle('open')
+        menu.classList.toggle('open')
+    });
+</script>
 
-
-
-
-
-  
-    </script>
 </html>
-
