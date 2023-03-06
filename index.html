@@ -20,20 +20,24 @@
             //parcours les filtres
             checkboxes.forEach((checkbox) => {
                 //si changement sur un des filtres:
-                checkbox.addEventListener('change', (e) => {
+                checkbox.addEventListener('click', (e) => {
                     //recupération valeur des filtres
                     const category = e.target.value;
 
                     //ajoute show à une figure si sa class === à la value de la case cochée (ou si "tout" est coché)
                     figures.forEach((figure) => {
-                        if (figure.classList.contains(category) || category ===
-                            "tout") {
+                        if (figure.classList.contains(category) || category === "tout") {
                             figure.classList.toggle('show', e.target.checked);
                         }
                     });
+                    //uncheck "tout" si une autre checkbox est active
+                  //  if (category !== "tout") {
+               // document.querySelector('.filtre-tout').change([checked="false"]);
+                 //   }
+                });
                 });
             });
-        });
+    
     </script>
 </head>
 
@@ -62,12 +66,13 @@
         <section id="presentation">
 
             <p> Graphiste freelance <span class="highlight">touche à tout</span>, je suis constamment à la recherche de
-                nouvelles façon de développer ma créativité. <br>
-                J'exerce à Paris et en Normandie et suis disponible pour créer, mettre à jour ou décliner votre identité
+                nouvelles façon de développer ma créativité. </p>
+            
+              <p>J'exerce à Paris et en Normandie et suis disponible pour créer, mettre à jour ou décliner votre identité
                 visuelle sur tout support <span class="highlight"> imprimé ou numérique</span>.</p>
 
             <a href="#contactSection" class="CTA">
-                <p> Me contacter </p><img src="/images/arrow-right-solid.svg" alt="fleche">
+                <p> Me contacter </p><!--<img src="/images/arrow-right-solid.svg" alt="fleche">-->
             </a>
 
         </section>
@@ -100,7 +105,7 @@
 
         <div class="projets">
             <figure class="fig print id-vis photographie show">
-                <img src="images/caisse-bulle-st-laurent.jpg" alt="caisse de cidres" data-item="print">
+                <img src="images/caisse-bulle-st-laurent.jpg" alt="caisse de cidres">
                 <a href="#">
                     <figcaption>
                         <h3>Les bulles du Saint Laurent</h3>
@@ -110,8 +115,8 @@
 
             </figure>
 
-            <figure class="fig id-vis plv print">
-                <img src="images/couvvape.png" alt="carnet de vape" data-item="plv">
+            <figure class="fig id-vis plv print show">
+                <img src="images/couvvape.png" alt="carnet de vape">
                 <a href="#">
                     <figcaption>
                         <h3>Le carnet de Vape</h3>
@@ -120,15 +125,15 @@
                 </a>
             </figure>
 
-            <figure class="fig id-vis web">
-                <img src="images/amm5.png" alt="logo et sac art Méli-Mélo" data-item="Web"> <a href="#">
+            <figure class="fig id-vis web show">
+                <img src="images/amm5.png" alt="logo et sac art Méli-Mélo"> <a href="#">
                     <figcaption>
                         <h3>Art Méli-Mélo</h3>
                         Identité visuelle, Webdesign
                     </figcaption>
                 </a></figure>
 
-            <figure class="fig id-vis">
+            <figure class="fig id-vis show">
                 <img src="images/01_FLATLAY_BUISNESSCARDS.png" alt="Visuels des produits laboratoire Sense"
                     data-item="id-vis">
                 <a href="#">
@@ -139,8 +144,8 @@
                 </a>
             </figure>
 
-            <figure class="fig web id-vis" id="firecamp">
-                <img src="images/mockup-firecamp.png" alt="page d'accueil du site firecamp" data-item="web">
+            <figure class="fig web id-vis show" id="firecamp">
+                <img src="images/mockup-firecamp.png" alt="page d'accueil du site firecamp">
                 <a href="#">
                     <figcaption>
                         <h3>Fire Camp</h3>
@@ -148,9 +153,9 @@
                     </figcaption>
                 </a></figure>
 
-            <figure class="fig photographie" id="gaspillage">
+            <figure class="fig photographie show" id="gaspillage">
                 <img src="images/1ca46943-51b2-4392-b4be-b05fae6c8b0c.jpg"
-                    alt="affiche contre le gaspillage alimentaire" data-item="photo">
+                    alt="affiche contre le gaspillage alimentaire">
                 <a href="#">
                     <figcaption>
                         <h3>Gaspillage alimentaire</h3>
@@ -159,8 +164,8 @@
                 </a>
             </figure>
 
-            <figure class="fig id-vis web print" id="croft">
-                <img src="images/couv-croft2.png" alt="logo et sculptre d'Edith Croft" data-item="web">
+            <figure class="fig id-vis web print show" id="croft">
+                <img src="images/couv-croft2.png" alt="logo et sculptre d'Edith Croft">
                 <a href="#">
 
                     <figcaption>
@@ -169,8 +174,8 @@
                     </figcaption>
                 </a></figure>
 
-            <figure class="fig motion">
-                <img src="images/couv-geev.png" alt="logo geev" data-item="motion">
+            <figure class="fig motion show">
+                <img src="images/couv-geev.png" alt="logo geev">
                 <a href="#">
                     <figcaption>
                         <h3>Geev</h3>
