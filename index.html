@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Alice Lemerre - portfolio</title>
     <link rel="stylesheet" href="css/style.css">
 
     <script>
@@ -26,18 +26,52 @@
 
                     //ajoute show à une figure si sa class === à la value de la case cochée (ou si "tout" est coché)
                     figures.forEach((figure) => {
-                        if (figure.classList.contains(category) || category === "tout") {
+                        if (figure.classList.contains(category) || category ===
+                            "tout") {
                             figure.classList.toggle('show', e.target.checked);
                         }
                     });
                     //uncheck "tout" si une autre checkbox est active
-                  //  if (category !== "tout") {
-               // document.querySelector('.filtre-tout').change([checked="false"]);
-                 //   }
-                });
+                    if (category !== "tout") {
+                        document.querySelector('.filtre-tout').checked = false;
+                    }
+
+                    if (category === "tout" && e.target.checked) {
+                        checkboxes.forEach((cb) => {
+                            if (cb.value !== "tout") {
+                                cb.checked = false;
+                            }
+                        });
+                    }
                 });
             });
-    
+         /*   const filtresCategories = document.querySelectorAll('.liste-filtres input[type="checkbox"]:not(.filtre-tout)');
+
+            filtresCategories.forEach(checkbox => {
+              checkbox.addEventListener('change', () => {
+                     const checkedBoxes = document.querySelectorAll('.liste-filtres input[type="checkbox"]:checked:not(.filtre-tout)');
+                    const projets = document.querySelector('.projets');
+                  
+
+                   if (checkedBoxes.length > 3 &&checkedBoxes.length < 6) {
+                        projets.style.gridTemplateColumns = 'auto 0.75fr 1fr 1fr 1fr';
+
+                    } else if (checkedBoxes.length === 3) {
+                        projets.style.gridTemplateColumns = '1fr 1fr 1fr';
+                        projets.style.gridColumns = 'span 1';
+                        projets.style.gridRows = 'span 1';
+
+
+                    } else if (checkedBoxes.length < 3) {
+                        projets.style.gridTemplateColumns = '1fr 1fr';
+                        projets.style.gridColumns = 'span 1';
+                        projets.style.gridRows = 'span 1';
+                    }
+                });
+                }); */
+            }); 
+
+        
     </script>
 </head>
 
@@ -67,12 +101,15 @@
 
             <p> Graphiste freelance <span class="highlight">touche à tout</span>, je suis constamment à la recherche de
                 nouvelles façon de développer ma créativité. </p>
-            
-              <p>J'exerce à Paris et en Normandie et suis disponible pour créer, mettre à jour ou décliner votre identité
-                visuelle sur tout support <span class="highlight"> imprimé ou numérique</span>.</p>
+
+            <p>J'exerce à <span class="highlight">
+                    Paris</span> et en <span class="highlight">Normandie</span> et suis disponible pour créer, mettre à
+                jour ou décliner votre <span class="highlight"> identité
+                    visuelle</span> sur tout support imprimé ou numérique.</p>
 
             <a href="#contactSection" class="CTA">
-                <p> Me contacter </p><!--<img src="/images/arrow-right-solid.svg" alt="fleche">-->
+                <p> Me contacter </p>
+                <!--<img src="/images/arrow-right-solid.svg" alt="fleche">-->
             </a>
 
         </section>
@@ -80,10 +117,10 @@
 
     <section class="galerie">
 
-        <h3>Mes travaux</h3>
+        <h2>Mes travaux</h2>
 
         <ul class="liste-filtres">
-            <li class="filtre"> <input type="checkbox" value="tout" checked="true">
+            <li class="filtre"> <input type="checkbox" value="tout" class="filtre-tout" checked="true">
                 <label for="tout">Tout</label> </li>
 
             <li class="filtre"> <input type="checkbox" value="print">
@@ -100,6 +137,9 @@
 
             <li class="filtre"> <input type="checkbox" value="plv">
                 <label for="PLV">PLV</label> </li>
+
+            <li class="filtre"> <input type="checkbox" value="photo">
+                    <label for="Photo">Photographie</label> </li>
         </ul>
 
 
@@ -153,7 +193,7 @@
                     </figcaption>
                 </a></figure>
 
-            <figure class="fig photographie show" id="gaspillage">
+            <figure class="fig photo show" id="gaspillage">
                 <img src="images/1ca46943-51b2-4392-b4be-b05fae6c8b0c.jpg"
                     alt="affiche contre le gaspillage alimentaire">
                 <a href="#">
@@ -218,16 +258,16 @@
 
             <div class="form">
                 <label for="name">Votre nom : </label>
-                <input type="text" name="name" id="name" required>
+                <input type="text" name="name" id="name" placeholder="Nom Prénom" required>
             </div>
 
             <div class="form">
                 <label for="email">Votre adresse mail : </label>
-                <input type="email" name="email" id="email" required>
+                <input type="email" name="email" id="email" placeholder="adresse.mail@mail.com" required>
             </div>
 
             <div>
-                <label for="message">Votre demande: </label>
+                <label for="message">Votre demande : </label>
                 <input type="text" name="message" id="message" required>
             </div>
 

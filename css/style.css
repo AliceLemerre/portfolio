@@ -142,7 +142,7 @@ a {
 /*css*/
 
 body {
-   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   font-family: 'hepta slab', 'roboto slab', monospace;
    background: #FFF6E8;
 
 }
@@ -290,7 +290,7 @@ nav.open a:active{
    display: flex;
    align-items: center;
    padding-left: 5vw;
-
+ 
 }
 
 
@@ -305,7 +305,8 @@ h3 {
 }
 
 .titres {
-   height: 20vh;
+   min-height: 15vh;
+   max-height: 20vh;
 }
 
 
@@ -325,13 +326,16 @@ header h2 {
    justify-content: center;
    align-items: center;
    line-height: 140%;
+   min-height: 30vh;
+   padding: 1vh 5vw 1vh 5vw;
+
 }
 
 #presentation>p{
    margin:1vw;
 }
 
-.CTA {
+.CTA, input[type=submit] {
    padding: 3% 6%;
    color: #FFF6E8;
    font-weight: 600;
@@ -343,6 +347,13 @@ header h2 {
    margin : 0vw 5vw 1vw 5vw;
 }
 
+.CTA:hover, input[type=submit]:hover{
+   background:#fff;
+   outline : 4px solid #EE5600;
+   color :#EE5600;
+   outline-offset: -4px;
+   transition: ease-in-out 0.2s;
+}
 
 .CTA img {
    max-height: 20px;
@@ -355,18 +366,22 @@ header h2 {
 
 
 .highlight {
-   color: #fff;
-   background-color: #EE5600;
+   color: #EE5600;
+   /*background-color: #EE5600;
    backdrop-filter: blur(50%);
    padding: 1px;
-   margin: 0.8px;
+   margin: 0.8px;*/
    font-family: "Argent Pixel CF", georgia, serif;
    font-style: italic;
 }
 
-.galerie h3 {
-   padding: 2vw 5vw;
+.galerie h2 {
+   padding: 4vh 0vw 2vh 5vw ;
+   font-family: 'hepta slab', 'roboto slab', monospace;
+   font-size: 2rem;
+
 }
+
 
 input[type="checkbox"] {
    -webkit-appearance: none;
@@ -388,7 +403,7 @@ input[type="checkbox"] {
    content: '';
    position: absolute;
    top: 3%;
-   left: 10%;
+   left: 3%;
    width: 90%;
 
    aspect-ratio: 1;
@@ -461,7 +476,7 @@ input[type="checkbox"] {
 .fig.show figcaption {
    width: 100%;
    height: 100%;
-   background-color: rgb(50, 10, 10, 19.0%);
+   background-color: rgb(50, 10, 10, 30.0%);
    
    /*backdrop-filter: blur(10px);*/
    display: flex;
@@ -508,16 +523,6 @@ input[type="checkbox"] {
 
 }*/
 
-#contact::before{
-   display: block;
-   content: "";
-   height : 1px;
-   width: 35vw;
-   background: #000;
-   position: absolute;
-   top: -10px;
-   left:33%;
-}
 
 #contact {
    display: flex;
@@ -526,7 +531,8 @@ input[type="checkbox"] {
    flex-direction: column;
    justify-content: space-between;
    position: relative;
-
+   line-height: 140%;
+   margin-top : 3vh;
 }
 
 #contact>* {
@@ -544,16 +550,13 @@ input[type="checkbox"] {
 justify-self: center;
 }
 
-#moyensContact>*{
- padding-bottom: 12px;
-}
+
 #contact form {
    display: flex;
    flex-wrap: wrap;
    flex-direction: column;
    background: #fff6E8;
    color: #000;
-
 }
 
 #contact form>* {
@@ -568,9 +571,15 @@ justify-self: center;
    display: block;
    width: 90%;
    border: 0px;
-   margin-top: 10px;
+   margin: 5px 0px 15px 0px;
+   height: 20px;
 }
 
+input::placeholder {
+   font-family: 'Hepta slab', Courier, monospace;
+   opacity: 0.6;
+   color: #000;
+}
 
 #contact ul {
    display: flex;
@@ -590,6 +599,7 @@ justify-self: center;
 }
 
 input[type=submit]{
+   font-family: 'Hepta slab', Courier, monospace;
    background-color:#EE5600;
    color: #fff;
 }
@@ -598,7 +608,7 @@ input[type=submit]{
 }
 
 
-@media screen and (min-width:600px) {
+@media screen and (min-width:615px) {
 
 
    header{
@@ -649,7 +659,7 @@ nav ul{
 }
 
 nav ul li{
-   padding : 12px 12px 22px 0px;
+   padding : 12px;
    text-align: right;
 }
 
@@ -667,9 +677,9 @@ nav a{
 #presentation{
    max-width: 40vw;
    margin:  2vh 5vw 2vh 0vw ;
-   max-height: 40vh;
-   aspect-ratio: 1 / 1;
+   aspect-ratio: 1;
    justify-content: space-around;
+   height: 38vh;
 
 }
 
@@ -706,9 +716,21 @@ header::after{
       grid-column: span 1;
    }
 
-   #moyensContact{
-      width: 30vw;
-   }
+   
+#contact::before{
+   display: block;
+   content: "";
+   height : 1px;
+   width: 35vw;
+   background: #000;
+   position: absolute;
+   top: -10px;
+   left:33%;
+}
+
+   #moyensContact h3{
+padding-bottom: 1vh;
+  }
 
 
    #contact form input {
@@ -717,7 +739,7 @@ header::after{
    
    input[type=submit]{
 
-      width: 40%;
+      width: 60px;
    }
 
 }
@@ -793,6 +815,9 @@ header::after{
       font-weight: 500;
    }
 
+   header{
+      height: 60vh;
+   }
 
    header h2 {
       font-family: "Argent Pixel CF", georgia, serif;
@@ -802,6 +827,8 @@ header::after{
 
    #presentation{
       width: 30vw;
+      min-height: 45vh;
+      max-height: 50vh;
    }
 
    #presentation>p {
