@@ -5,40 +5,74 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Alice Lemerre - portfolio</title>
     <link rel="stylesheet" href="css/style.css">
 
-<script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            //nodelist des filtres
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            console.log(checkboxes);
+            //nodelist des figures
+            const figures = document.querySelectorAll('.galerie figure');
+            console.log(figures);
 
-    //for each figure in galerie add class "show"
-    // if any filter is checked uncheck tout
-    // if unchecked remove class show
-document.addEventListener('DOMContentLoaded', function(){
+            //parcours les filtres
+            checkboxes.forEach((checkbox) => {
+                //si changement sur un des filtres:
+                checkbox.addEventListener('click', (e) => {
+                    //recupération valeur des filtres
+                    const category = e.target.value;
 
-    let projets= document.querySelector(".fig");
+                    //ajoute show à une figure si sa class === à la value de la case cochée (ou si "tout" est coché)
+                    figures.forEach((figure) => {
+                        if (figure.classList.contains(category) || category ===
+                            "tout") {
+                            figure.classList.toggle('show', e.target.checked);
+                        }
+                    });
+                    //uncheck "tout" si une autre checkbox est active
+                    if (category !== "tout") {
+                        document.querySelector('.filtre-tout').checked = false;
+                    }
 
-    document.getElementById('filtre-tout').addEventListener('click', function(){
-        for(let i = 0; i<projets.length; i++){
-        document.querySelector('.fig').classList.toggle("hide");
-        }
-    });
+                    if (category === "tout" && e.target.checked) {
+                        checkboxes.forEach((cb) => {
+                            if (cb.value !== "tout") {
+                                cb.checked = false;
+                            }
+                        });
+                    }
+                });
+            });
+         /*   const filtresCategories = document.querySelectorAll('.liste-filtres input[type="checkbox"]:not(.filtre-tout)');
 
-});
+            filtresCategories.forEach(checkbox => {
+              checkbox.addEventListener('change', () => {
+                     const checkedBoxes = document.querySelectorAll('.liste-filtres input[type="checkbox"]:checked:not(.filtre-tout)');
+                    const projets = document.querySelector('.projets');
+                  
 
-    document.addEventListener('DOMContentLoaded', function(){
-    let projetsPrint = document.querySelectorAll('.print');
+                   if (checkedBoxes.length > 3 &&checkedBoxes.length < 6) {
+                        projets.style.gridTemplateColumns = 'auto 0.75fr 1fr 1fr 1fr';
 
-    for(let i = 0; i<projetsPrint.length; i++){
-    document.querySelector('.filtre-print').addEventListener('click', function(){
-        document.querySelector('.print').classList.toggle("hide");
-    
-    });
-}
-});
+                    } else if (checkedBoxes.length === 3) {
+                        projets.style.gridTemplateColumns = '1fr 1fr 1fr';
+                        projets.style.gridColumns = 'span 1';
+                        projets.style.gridRows = 'span 1';
 
 
+                    } else if (checkedBoxes.length < 3) {
+                        projets.style.gridTemplateColumns = '1fr 1fr';
+                        projets.style.gridColumns = 'span 1';
+                        projets.style.gridRows = 'span 1';
+                    }
+                });
+                }); */
+            }); 
 
-</script>
+        
+    </script>
 </head>
 
 <body>
@@ -54,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 <li><a href="#"></a>contact</li>
             </ul>
         </nav>
-        
+
         <div class="infos">
             <div class="titres">
                 <h1>Alice Lemerre</h1>
@@ -65,15 +99,17 @@ document.addEventListener('DOMContentLoaded', function(){
 
         <section id="presentation">
 
-            <p> Touche à tout <span class="highlight">passionnée</span>, j'aime
-                développer ma créativité sur tout type
-                de support. Je cherche à intégrer une
-                équipe impliquée qui me permettra de
-                gérer des projets enrichissants et me
-                poussera à constamment me dépasser.</p>
-            
-            <a href="a-propos.html" class="CTA">
-                <p> En savoir plus sur moi </p><img src="/images/arrow-right-solid.svg" alt="fleche">
+            <p> Graphiste freelance <span class="highlight">touche à tout</span>, je suis constamment à la recherche de
+                nouvelles façon de développer ma créativité. </p>
+
+            <p>J'exerce à <span class="highlight">
+                    Paris</span> et en <span class="highlight">Normandie</span> et suis disponible pour créer, mettre à
+                jour ou décliner votre <span class="highlight"> identité
+                    visuelle</span> sur tout support imprimé ou numérique.</p>
+
+            <a href="#contactSection" class="CTA">
+                <p> Me contacter </p>
+                <!--<img src="/images/arrow-right-solid.svg" alt="fleche">-->
             </a>
 
         </section>
@@ -81,32 +117,35 @@ document.addEventListener('DOMContentLoaded', function(){
 
     <section class="galerie">
 
-        <h3>Mes travaux</h3>
+        <h2>Mes travaux</h2>
 
         <ul class="liste-filtres">
-            <li> <input type="checkbox" id="filtre-tout" checked="true">
+            <li class="filtre"> <input type="checkbox" value="tout" class="filtre-tout" checked="true">
                 <label for="tout">Tout</label> </li>
 
-            <li> <input type="checkbox" class="filtre-print">
+            <li class="filtre"> <input type="checkbox" value="print">
                 <label for="print">Print</label> </li>
 
-            <li> <input type="checkbox" class="filtre-web">
-                <label for="web">Webdesign-intégration</label> </li>
+            <li class="filtre"> <input type="checkbox" value="web">
+                <label for="web">Webdesign</label> </li>
 
-            <li> <input type="checkbox" class="id-vis">
+            <li class="filtre"> <input type="checkbox" value="id-vis">
                 <label for="id-vis">Identité visuelle</label> </li>
 
-            <li> <input type="checkbox" class="filtre-motion">
+            <li class="filtre"> <input type="checkbox" value="motion">
                 <label for="motion">Motion design</label> </li>
 
-            <li> <input type="checkbox" class="filtre-plv">
+            <li class="filtre"> <input type="checkbox" value="plv">
                 <label for="PLV">PLV</label> </li>
+
+            <li class="filtre"> <input type="checkbox" value="photo">
+                    <label for="Photo">Photographie</label> </li>
         </ul>
 
 
         <div class="projets">
-            <figure class="fig print id-vis photographie print">
-                <img src="images/caisse-bulle-st-laurent.jpg" alt="">
+            <figure class="fig print id-vis photographie show">
+                <img src="images/caisse-bulle-st-laurent.jpg" alt="caisse de cidres">
                 <a href="#">
                     <figcaption>
                         <h3>Les bulles du Saint Laurent</h3>
@@ -116,8 +155,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
             </figure>
 
-            <figure class="fig id-vis plv print">
-                <img src="images/couvvape.png" alt="">
+            <figure class="fig id-vis plv print show">
+                <img src="images/couvvape.png" alt="carnet de vape">
                 <a href="#">
                     <figcaption>
                         <h3>Le carnet de Vape</h3>
@@ -126,16 +165,17 @@ document.addEventListener('DOMContentLoaded', function(){
                 </a>
             </figure>
 
-            <figure class="fig id-vis web">
-                <img src="images/amm5.png" alt=""> <a href="#">
+            <figure class="fig id-vis web show">
+                <img src="images/amm5.png" alt="logo et sac art Méli-Mélo"> <a href="#">
                     <figcaption>
                         <h3>Art Méli-Mélo</h3>
                         Identité visuelle, Webdesign
                     </figcaption>
                 </a></figure>
 
-            <figure class="fig id-vis">
-                <img src="images/01_FLATLAY_BUISNESSCARDS.png" alt="">
+            <figure class="fig id-vis show">
+                <img src="images/01_FLATLAY_BUISNESSCARDS.png" alt="Visuels des produits laboratoire Sense"
+                    data-item="id-vis">
                 <a href="#">
                     <figcaption>
                         <h3>Laboratoire Sense</h3>
@@ -144,8 +184,8 @@ document.addEventListener('DOMContentLoaded', function(){
                 </a>
             </figure>
 
-            <figure class="fig web id-vis" id="firecamp">
-                <img src="images/mockup-firecamp.png" alt="">
+            <figure class="fig web id-vis show" id="firecamp">
+                <img src="images/mockup-firecamp.png" alt="page d'accueil du site firecamp">
                 <a href="#">
                     <figcaption>
                         <h3>Fire Camp</h3>
@@ -153,8 +193,9 @@ document.addEventListener('DOMContentLoaded', function(){
                     </figcaption>
                 </a></figure>
 
-            <figure class="fig photographie" id="gaspillage">
-                <img src="images/1ca46943-51b2-4392-b4be-b05fae6c8b0c.jpg" alt="">
+            <figure class="fig photo show" id="gaspillage">
+                <img src="images/1ca46943-51b2-4392-b4be-b05fae6c8b0c.jpg"
+                    alt="affiche contre le gaspillage alimentaire">
                 <a href="#">
                     <figcaption>
                         <h3>Gaspillage alimentaire</h3>
@@ -163,8 +204,8 @@ document.addEventListener('DOMContentLoaded', function(){
                 </a>
             </figure>
 
-            <figure class="fig id-vis web print" id="croft">
-                <img src="images/couv-croft2.png" alt="">
+            <figure class="fig id-vis web print show" id="croft">
+                <img src="images/couv-croft2.png" alt="logo et sculptre d'Edith Croft">
                 <a href="#">
 
                     <figcaption>
@@ -173,8 +214,8 @@ document.addEventListener('DOMContentLoaded', function(){
                     </figcaption>
                 </a></figure>
 
-            <figure class="fig motion">
-                <img src="images/couv-geev.png" alt="">
+            <figure class="fig motion show">
+                <img src="images/couv-geev.png" alt="logo geev">
                 <a href="#">
                     <figcaption>
                         <h3>Geev</h3>
@@ -182,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function(){
                     </figcaption>
                 </a></figure>
 
-        
+
         </div>
 
 
@@ -193,7 +234,9 @@ document.addEventListener('DOMContentLoaded', function(){
     <section id="contact">
 
         <div id="moyensContact">
-            <h3> Me contacter</h3>
+            <a id="contactSection"></a>
+            <h3> Me contacter</h3></a>
+
 
             <p> Ecrivez-moi à lemerre.alice[at]gmail.com <br>
                 ou utilisez le formulaire de contact !</p>
@@ -201,27 +244,30 @@ document.addEventListener('DOMContentLoaded', function(){
 
             <p> Retrouvez-moi sur :</p>
             <ul>
-                <li><img src="/images/square-github.svg" alt=""></li>
-                <li><img src="/images/square-behance.svg" alt=""></li>
-                <li><img src="/images/linkedin.svg" alt=""></li>
+                <li><a href="https://github.com/AliceLemerre/" target="_blank"><img src="/images/square-github.svg"
+                            alt="logo-github"></a></li>
+                <li><a href="https://www.behance.net/alicelemerre" target="_blank"><img src="/images/square-behance.svg"
+                            alt=""></a></li>
+                <li><a href="https://www.linkedin.com/in/alice-lemerre/" target="_blank"><img src="/images/linkedin.svg"
+                            alt=""></a></li>
             </ul>
 
         </div>
 
-        <form action="" method="get" class="form-example">
+        <form action="" method="get" class="form">
 
-            <div class="form-example">
+            <div class="form">
                 <label for="name">Votre nom : </label>
-                <input type="text" name="name" id="name" required>
+                <input type="text" name="name" id="name" placeholder="Nom Prénom" required>
             </div>
 
-            <div class="form-example">
+            <div class="form">
                 <label for="email">Votre adresse mail : </label>
-                <input type="email" name="email" id="email" required>
+                <input type="email" name="email" id="email" placeholder="adresse.mail@mail.com" required>
             </div>
 
             <div>
-                <label for="message">Votre demande: </label>
+                <label for="message">Votre demande : </label>
                 <input type="text" name="message" id="message" required>
             </div>
 
@@ -234,21 +280,14 @@ document.addEventListener('DOMContentLoaded', function(){
 </body>
 
 <script>
-
     const burger = document.querySelector('.burger');
     const menu = document.querySelector('.menu');
 
     menu.addEventListener('click', () => {
 
-  burger.classList.toggle('open')
-  menu.classList.toggle('open')
-});
+        burger.classList.toggle('open')
+        menu.classList.toggle('open')
+    });
+</script>
 
-
-
-
-
-  
-    </script>
 </html>
-
